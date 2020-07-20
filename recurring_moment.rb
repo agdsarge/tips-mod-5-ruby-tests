@@ -19,9 +19,9 @@ class RecurringMoment
             # in the test, date is a DateTime of the form DateTime.advance(period: interval)
         # the advance method for DateTime is imported from active_support or active_support/core_ext
         # something is weird about months. i suspect it's february. i've partitioned it off.
+        # when it was with the other periods, i had six failing tests
 
         current = @start
-        ind = 0
 
         unless @period == 'monthly'
             while current < date
@@ -32,6 +32,7 @@ class RecurringMoment
                 end
             end
         else
+            ind = 1
             while current < date
                 current = month_helper(@start, ind)
                 ind += 1
